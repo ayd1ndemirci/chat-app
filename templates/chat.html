@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Chat</title>
+    <link rel="stylesheet" href="static/chat.css">
+    <script>
+        async function sendMessage() {
+    const message = document.getElementById("message").value.trim();
+    if (message === "") return;
+    await fetch("/messages", {
+        method: "POST",
+        body: new URLSearchParams({ message }),
+    });
+    document.getElementById("message").value = "";
+}
+
+async function fetchMessages() {
+    const res = await fetch("/messages");
+    const messages = await res.json();
+    const chatBox = document.getElementById("chat-box");
+    chatBox.innerHTML = messages.map(msg => `
+        <div class="message">
+            <div class="message-header">
+                <span class="username">${msg.username}</span>
+                <span class="timestamp">${msg.created_at}</span>
+            </div>
+            <p class="content">${msg.message}</p>
+        </div>
+    `).join("");
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+
+setInterval(fetchMessages, 100);
+
+    </script>
+</head>
+<body>
+    <div id="chat-container">
+        <main id="chat-box"></main>
+        <footer>
+            <input type="text" id="message" placeholder="Mesajınızı yazın" onkeydown="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()">Gönder</button>
+        </footer>
+    </div>
+</body>
+</html>

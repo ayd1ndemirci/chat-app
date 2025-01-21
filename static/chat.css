@@ -1,0 +1,104 @@
+body {
+    background-color: #2f3136;
+    font-family: "Segoe UI", Georgia, Serif;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#chat-container {
+    background-color: #36393f;
+    width: 100%;
+    max-width: 600px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#chat-box {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;  /* Kaydırma ekle */
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    max-height: 85%; /* Yüksekliği sınırlayın */
+}
+
+
+.message {
+    background-color: #4f545c;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.username {
+    font-weight: bold;
+    color: #99aab5;
+    font-size: 0.9em;
+}
+
+.timestamp {
+    font-size: 0.8em;
+    color: #b0b3b8;
+}
+
+.content {
+    color: #dcddde;
+    font-size: 1em;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #2f3136;
+    border-top: 1px solid #444;
+}
+
+input[type="text"] {
+    background-color: #40444b;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    background-color: #585d63;
+}
+
+button {
+    background-color: #7289da;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5b6eae;
+}
+
+button:active {
+    background-color: #4f5f8b;
+}
